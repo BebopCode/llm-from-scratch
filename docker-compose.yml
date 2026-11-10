@@ -1,0 +1,16 @@
+services:
+  llm:
+    build: .
+    image: llm-from-scratch-cpu
+    container_name: llm-dev
+    # The entrypoint runs Jupyter as whoever owns ./workspace,
+    # so files are editable both from the host and from Jupyter.
+    environment:
+      - PUID=1000   # only used if ./workspace ends up owned by root
+      - PGID=1000
+    ports:
+      - "127.0.0.1:8888:8888"   # localhost only, since the token is disabled
+    volumes:
+      - ./workspace:/workspace
+    shm_size: 2g
+    restart: unless-stopped

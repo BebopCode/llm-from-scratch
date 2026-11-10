@@ -1,0 +1,9 @@
+jupyterlab
+tiktoken
+numpy
+pandas
+matplotlib
+tqdm
+# Only needed in chapter 5 to load OpenAI's GPT-2 weights (large download).
+# Comment out if you want a smaller image for now.
+tensorflow-cpu
